@@ -14,9 +14,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
+        "hosni/laravel-temporary-urls-minio": "^1.0",
         "inertiajs/inertia-laravel": "^2.0",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "spatie/laravel-medialibrary": "^11.15",
         "spatie/laravel-permission": "^6.21",
         "tightenco/ziggy": "^2.6"
     },

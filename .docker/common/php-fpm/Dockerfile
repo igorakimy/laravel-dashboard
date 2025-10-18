@@ -5,6 +5,7 @@ FROM php:8.4-fpm AS builder
 # Some dependencies are required for PHP extensions only in the build stage
 # We don't need to install Node.js or build assets, as it was done in the Nginx image
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    vim \
     curl \
     unzip \
     libpq-dev \
@@ -14,17 +15,31 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libcurl4-openssl-dev \
     libicu-dev \
     libzip-dev \
+    libpng-dev \
+    locales \
+    zip \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    jpegoptim \
+    optipng \
+    pngquant \
+    gifsicle \
     && docker-php-ext-install -j$(nproc) \
     pdo_mysql \
     pdo_pgsql \
+    mbstring \
     pgsql \
     opcache \
     intl \
     zip \
+    exif \
+    pcntl \
     bcmath \
     soap \
-    && pecl install redis \
-    && docker-php-ext-enable redis \
+    && pecl install redis && docker-php-ext-enable redis \
+    && docker-php-ext-enable exif \
+    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
+    && docker-php-ext-install gd \
     && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
