@@ -1,5 +1,6 @@
 import '../css/app.css';
 
+import { initializeTheme } from '@/hooks/use-appearance';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
@@ -24,3 +25,6 @@ void createInertiaApp({
     color: '#4B5563',
   },
 });
+
+// Инициализация темы (установка светлой/тёмной темы при загрузке)...
+initializeTheme();
