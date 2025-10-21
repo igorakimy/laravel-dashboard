@@ -13,6 +13,7 @@ import { Link } from '@inertiajs/react';
 import { LayoutGrid } from 'lucide-react';
 import { ComponentProps } from 'react';
 import AppLogo from './app-logo';
+import { NavUser } from '@/components/navbar/nav-user'
 
 const navItems: NavItem[] = [
   {
@@ -41,7 +42,9 @@ export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
         <NavMain items={navItems} />
       </SidebarContent>
 
-      <SidebarFooter></SidebarFooter>
+      <SidebarFooter>
+        <NavUser />
+      </SidebarFooter>
     </Sidebar>
   );
 }
