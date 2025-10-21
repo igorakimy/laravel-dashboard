@@ -1,5 +1,5 @@
-import { type CSSProperties, type ReactNode, useState } from 'react'
-import { SidebarProvider } from '@/components/ui/sidebar'
+import { SidebarProvider } from '@/components/ui/sidebar';
+import { type ReactNode, useState } from 'react';
 
 type ShellVariant = 'header' | 'sidebar';
 
@@ -9,7 +9,9 @@ interface AppShellProps {
 }
 
 export function AppShell({ children, variant = 'header' }: AppShellProps) {
-  const [isOpen, setIsOpen] = useState(() => (typeof window !== 'undefined' ? localStorage.getItem('sidebar_state') !== 'false' : true));
+  const [isOpen, setIsOpen] = useState(() =>
+    typeof window !== 'undefined' ? localStorage.getItem('sidebar_state') !== 'false' : true,
+  );
 
   const handleSidebarChange = (open: boolean) => {
     setIsOpen(open);
@@ -20,18 +22,12 @@ export function AppShell({ children, variant = 'header' }: AppShellProps) {
   };
 
   if (variant === 'header') {
-    return (
-      <div className="flex min-h-screen w-full flex-col">{children}</div>
-    );
+    return <div className="flex min-h-screen w-full flex-col">{children}</div>;
   }
 
   return (
-    <SidebarProvider
-      defaultOpen={isOpen}
-      open={isOpen}
-      onOpenChange={handleSidebarChange}
-    >
+    <SidebarProvider defaultOpen={isOpen} open={isOpen} onOpenChange={handleSidebarChange}>
       {children}
     </SidebarProvider>
-  )
+  );
 }

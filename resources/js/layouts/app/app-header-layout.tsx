@@ -1,6 +1,6 @@
-import { type ReactNode } from 'react'
-import { AppShell } from '@/components/app/app-shell'
-import { AppContent } from '@/components/app/app-content'
+import { AppContent } from '@/components/app/app-content';
+import { AppShell } from '@/components/app/app-shell';
+import { type ReactNode } from 'react';
 
 interface AppHeaderLayoutProps {
   children: ReactNode;

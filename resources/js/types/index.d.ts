@@ -8,6 +8,11 @@ interface NavItem {
   isActive?: boolean;
 }
 
+interface BreadcrumbItem {
+  title: string;
+  href: string;
+}
+
 interface SharedData {
   isSidebarOpen: boolean;
   [key: string]: unknown;
