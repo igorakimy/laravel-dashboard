@@ -23,7 +23,7 @@ final class LoginController extends Controller
     {
         return Inertia::render('auth/login', [
             'status' => $request->session()->get('status'),
-            'canResetPassword' => Route::has('password.request'),
+            'canResetPassword' => Route::has('password.forgot'),
         ]);
     }
 

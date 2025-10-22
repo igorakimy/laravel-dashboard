@@ -1,8 +1,12 @@
-import { User } from '@/types'
-import { DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator } from '@/components/ui/dropdown-menu'
-import { UserInfo } from '@/components/user/user-info'
-import { Link, router } from '@inertiajs/react'
-import { LogOut } from 'lucide-react'
+import {
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from '@/components/ui/dropdown-menu';
+import { UserInfo } from '@/components/user/user-info';
+import { User } from '@/types';
+import { Link, router } from '@inertiajs/react';
+import { LogOut } from 'lucide-react';
 
 interface UserMenuContentProps {
   user: User;
@@ -22,12 +26,7 @@ export function UserMenuContent({ user }: UserMenuContentProps) {
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
       <DropdownMenuItem asChild>
-        <Link
-          className="block w-full"
-          href={route('logout')}
-          as="button"
-          onClick={handleLogout}
-        >
+        <Link className="block w-full" href={route('logout')} as="button" onClick={handleLogout}>
           <LogOut className="mr-2" />
           Выйти
         </Link>

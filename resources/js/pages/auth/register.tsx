@@ -1,11 +1,11 @@
-import AuthLayout from '@/layouts/auth-layout'
-import { Form, Head } from '@inertiajs/react'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
-import InputError from '@/components/form/input-error'
-import { Button } from '@/components/ui/button'
-import TextLink from '@/components/links/text-link'
-import { Spinner } from '@/components/ui/spinner'
+import InputError from '@/components/form/input-error';
+import TextLink from '@/components/links/text-link';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Spinner } from '@/components/ui/spinner';
+import AuthLayout from '@/layouts/auth-layout';
+import { Form, Head } from '@inertiajs/react';
 
 export default function Register() {
   return (
@@ -19,9 +19,9 @@ export default function Register() {
         method="post"
         resetOnSuccess={['password', 'password_confirmation']}
         disableWhileProcessing
-        className="flex flex-col gap-6 mt-3"
+        className="mt-3 flex flex-col gap-6"
       >
-        {({processing, errors}) => (
+        {({ processing, errors }) => (
           <>
             <div className="grid gap-6">
               <div className="grid gap-2">
@@ -92,7 +92,7 @@ export default function Register() {
               </Button>
             </div>
 
-            <div className="text-center text-sm text-muted-foreground">
+            <div className="text-muted-foreground text-center text-sm">
               Уже зарегистрированы?{' '}
               <TextLink href={route('login')} tabIndex={6}>
                 Войти
@@ -102,5 +102,5 @@ export default function Register() {
         )}
       </Form>
     </AuthLayout>
-  )
+  );
 }

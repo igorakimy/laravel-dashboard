@@ -16,6 +16,9 @@ workspace:
 migrate:
 	docker compose -f docker-compose.dev.yml exec workspace php artisan migrate
 
+queue:
+	docker compose -f docker-compose.dev.yml exec workspace php artisan queue:listen
+
 ide-generate:
 	docker compose -f docker-compose.dev.yml exec workspace php artisan ide-helper:generate \
 	&& docker compose -f docker-compose.dev.yml exec workspace php artisan ide-helper:models --nowrite \

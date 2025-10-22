@@ -22,7 +22,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
         action={route('login')}
         method="post"
         resetOnSuccess={['password']}
-        className="flex flex-col gap-6 mt-3"
+        className="mt-3 flex flex-col gap-6"
       >
         {({ processing, errors }) => (
           <>
@@ -46,7 +46,11 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                 <div className="flex items-center">
                   <Label htmlFor="password">Пароль</Label>
                   {canResetPassword && (
-                    <TextLink href={'/reset'} className="ml-auto text-sm" tabIndex={5}>
+                    <TextLink
+                      href={route('password.forgot')}
+                      className="ml-auto text-sm"
+                      tabIndex={5}
+                    >
                       Забыли пароль?
                     </TextLink>
                   )}

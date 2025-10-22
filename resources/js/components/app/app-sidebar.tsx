@@ -1,4 +1,5 @@
 import { NavMain } from '@/components/navbar/nav-main';
+import { NavUser } from '@/components/navbar/nav-user';
 import {
   Sidebar,
   SidebarContent,
@@ -13,7 +14,6 @@ import { Link } from '@inertiajs/react';
 import { LayoutGrid } from 'lucide-react';
 import { ComponentProps } from 'react';
 import AppLogo from './app-logo';
-import { NavUser } from '@/components/navbar/nav-user'
 
 const navItems: NavItem[] = [
   {
