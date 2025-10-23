@@ -18,8 +18,7 @@ export default function VerifyEmail({ status }: VerifyEmailProps) {
 
       {status === 'verification-link-sent' && (
         <div className="mb-4 text-center text-sm font-medium text-green-600">
-          Ссылка для верификации была успешно отправлена на Ваш email, чтобы продолжить регистрацию
-          перейдите по ней.
+          Письмо отправлено. Для продолжения авторизации перейдите по ссылке в письме.
         </div>
       )}
 

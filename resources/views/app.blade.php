@@ -34,6 +34,12 @@
 
 <body class="font-sans antialiased">
 @inertia
+
+@if (config('app.debug'))
+    <script>
+        PhpDebugBar.DebugBar.prototype.recomputeBottomOffset = () => {};
+    </script>
+@endif
 </body>
 
 </html>
