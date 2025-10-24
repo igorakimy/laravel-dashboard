@@ -1,4 +1,5 @@
 import {
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -6,7 +7,7 @@ import {
 import { UserInfo } from '@/components/user/user-info';
 import { User } from '@/types';
 import { Link, router } from '@inertiajs/react';
-import { LogOut } from 'lucide-react';
+import { LogOut, UserRoundCog } from 'lucide-react';
 
 interface UserMenuContentProps {
   user: User;
@@ -24,6 +25,15 @@ export function UserMenuContent({ user }: UserMenuContentProps) {
           <UserInfo user={user} showEmail={true} />
         </div>
       </DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuGroup>
+        <DropdownMenuItem asChild>
+          <Link href={route('user.profile')} className="block w-full" as="button" prefetch>
+            <UserRoundCog className="mr-2" />
+            Профиль
+          </Link>
+        </DropdownMenuItem>
+      </DropdownMenuGroup>
       <DropdownMenuSeparator />
       <DropdownMenuItem asChild>
         <Link className="block w-full" href={route('logout')} as="button" onClick={handleLogout}>

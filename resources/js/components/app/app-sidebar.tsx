@@ -30,7 +30,7 @@ export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild size="lg">
-              <Link href={route('dashboard')} prefetch>
+              <Link href={route('home')} prefetch>
                 <AppLogo />
               </Link>
             </SidebarMenuButton>
