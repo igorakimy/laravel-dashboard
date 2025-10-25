@@ -78,7 +78,9 @@ export default function TwoFactor({
             </div>
           ) : (
             <div className="flex flex-col items-start justify-start space-y-4">
-              <Badge variant="destructive" className="text-white">Отключена</Badge>
+              <Badge variant="destructive" className="text-white">
+                Отключена
+              </Badge>
               <p className="text-muted-foreground">
                 Если двухфакторная аутентификация включена, вам будет предложено ввести безопасный
                 случайный PIN-код во время входа в аккаунт, который вы можете получить из приложения

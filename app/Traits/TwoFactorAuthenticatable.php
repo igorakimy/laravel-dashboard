@@ -13,12 +13,21 @@ use Illuminate\Support\Str;
 
 trait TwoFactorAuthenticatable
 {
+    /**
+     * Проверить, включена ли двухфакторная аутентификация у пользователя.
+     *
+     * @return bool
+     */
     public function hasEnabledTwoFactorAuthentication(): bool
     {
-        return ! is_null($this->two_factor_secret) &&
-               ! is_null($this->two_factor_confirmed_at);
+        return ! is_null($this->two_factor_secret) && ! is_null($this->two_factor_confirmed_at);
     }
 
+    /**
+     * Сгенерировать и получить векторное изображение QR-кода.
+     *
+     * @return string
+     */
     public function twoFactorQrCodeSvg(): string
     {
         $renderer = new ImageRenderer(
@@ -40,6 +49,11 @@ trait TwoFactorAuthenticatable
         return trim(substr($svg, strpos($svg, "\n") + 1));
     }
 
+    /**
+     * Получить ссылку на сгенерированный QR-код.
+     *
+     * @return string
+     */
     public function twoFactorQrCodeUrl(): string
     {
         return Google2FA::getQRCodeUrl(
@@ -49,6 +63,31 @@ trait TwoFactorAuthenticatable
         );
     }
 
+    /**
+     * Заменить указанный код восстановления после использования.
+     *
+     * @param string $code
+     * @return void
+     */
+    public function replaceRecoveryCode(string $code): void
+    {
+        $this->forceFill([
+            'two_factor_recovery_codes' => json_encode(array_map(
+                function ($recoveryCode) use ($code) {
+                    return $recoveryCode === $code
+                        ? $this->generateRecoveryCode()
+                        : $recoveryCode;
+                },
+                json_decode($this->two_factor_recovery_codes)
+            )),
+        ])->save();
+    }
+
+    /**
+     * Сгенерировать новый код восстановления.
+     *
+     * @return string
+     */
     public function generateRecoveryCode(): string
     {
         return Str::random(10) . '-' . Str::random(10);

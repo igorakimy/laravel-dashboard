@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\TwoFactorAuthController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,16 @@ Route::middleware(['guest'])->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
+
+    // Two-Factor Authentication
+    Route::get('two-factor', [TwoFactorAuthController::class, 'show'])
+        ->name('two-factor.login');
+
+    Route::post('two-factor/verify', [TwoFactorAuthController::class, 'verify'])
+        ->name('two-factor.verify');
+
+    Route::post('two-factor/recovery', [TwoFactorAuthController::class, 'recovery'])
+        ->name('two-factor.recovery');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -49,9 +60,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('email/verification-notification', [VerifyEmailController::class, 'send'])
         ->middleware('throttle:6,1')
         ->name('verification.send');
-
-    // Two-Factor Auth
-
 
     // Logout
     Route::get('logout', LogoutController::class)

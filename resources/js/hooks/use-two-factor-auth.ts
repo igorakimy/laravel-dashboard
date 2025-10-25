@@ -15,7 +15,7 @@ const routes = {
   qrCodeRoute: route('user.two-factor.qrcode'),
   secretKey: route('user.two-factor.secret'),
   recoveryCodes: route('user.two-factor.recovery.show'),
-}
+};
 
 const fetchJson = async <T>(url: string): Promise<T> => {
   const response = await fetch(url, {

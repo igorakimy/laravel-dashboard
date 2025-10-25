@@ -71,7 +71,7 @@ export default function TwoFactorRecoveryCodes({
             aria-controls="recovery-codes-section"
           >
             <RecoveryCodeIconComponent className="size-4" aria-hidden="true" />
-            {codesAreVisible ? 'Скрыть' : 'Показать'} коды восстановления
+            {codesAreVisible ? 'Скрыть' : 'Показать'} коды
           </Button>
 
           {canRegenerateCodes && (
@@ -92,7 +92,7 @@ export default function TwoFactorRecoveryCodes({
                   type="submit"
                   disabled={processing}
                   aria-describedby="regenerate-warning"
-                  className="focus:ring-2 ring-ring"
+                  className="ring-ring focus:ring-2"
                 >
                   <RefreshCw />
                   Перегенерировать коды
@@ -141,7 +141,13 @@ export default function TwoFactorRecoveryCodes({
                   <p id="regenerate-warning">
                     Каждый код восстановления можно использовать только один раз для доступа к вашей
                     учетной записи, после чего он будет удалён. Если вам нужно больше кодов, то
-                    кликните по кнопке <span onClick={() => focusOnRegenerateButton()} className="font-bold cursor-pointer">Перегенерировать коды</span>{' '}
+                    кликните по кнопке{' '}
+                    <span
+                      onClick={() => focusOnRegenerateButton()}
+                      className="cursor-pointer font-bold"
+                    >
+                      Перегенерировать коды
+                    </span>{' '}
                     выше.
                   </p>
                 </div>

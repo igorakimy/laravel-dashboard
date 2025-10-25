@@ -40,9 +40,19 @@ final class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route(
-            'dashboard',
-            absolute: false
-        ));
+        $user = $request->user();
+
+        if (! $user?->hasEnabledTwoFactorAuthentication()) {
+            return redirect()->intended(route('home'));
+        }
+
+        auth()->logout();
+
+        $request->session()->put([
+            'two_factor.login.id' => $user->getKey(),
+            'two_factor.login.remember' => $request->boolean('remember'),
+        ]);
+
+        return redirect()->route('two-factor.login');
     }
 }

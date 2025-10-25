@@ -11,13 +11,13 @@ import {
 } from '@/components/ui/dialog';
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 import { Spinner } from '@/components/ui/spinner';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useClipboard } from '@/hooks/use-clipboard';
 import { OTP_MAX_LENGTH } from '@/hooks/use-two-factor-auth';
 import { Form } from '@inertiajs/react';
 import { REGEXP_ONLY_DIGITS } from 'input-otp';
 import { Check, Copy } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 
 interface TwoFactorSetupStepProps {
   qrCodeSvg: string | null;
@@ -84,7 +84,9 @@ function TwoFactorSetupStep({
 
           <div className="relative flex w-full items-center justify-center">
             <div className="bg-border absolute inset-0 top-1/2 h-px w-full" />
-            <span className="bg-card relative px-2 py-1 text-muted-foreground">или, введите код вручную</span>
+            <span className="bg-card text-muted-foreground relative px-2 py-1">
+              или, введите код вручную
+            </span>
           </div>
 
           <div className="flex w-full space-x-2">
@@ -139,7 +141,13 @@ function TwoFactorVerificationStep({ onClose, onBack }: TwoFactorVerificationSte
   }, []);
 
   return (
-    <Form action={route('user.two-factor.confirm')} method="post" onSuccess={() => onClose()} resetOnError resetOnSuccess>
+    <Form
+      action={route('user.two-factor.confirm')}
+      method="post"
+      onSuccess={() => onClose()}
+      resetOnError
+      resetOnSuccess
+    >
       {({
         processing,
         errors,
@@ -260,7 +268,7 @@ export default function TwoFactorSetupModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-md" onInteractOutside={e => e.preventDefault()}>
+      <DialogContent className="sm:max-w-md" onInteractOutside={(e) => e.preventDefault()}>
         <DialogHeader className="flex items-center justify-center">
           <GridScanIcon />
           <DialogTitle>{modalConfig.title}</DialogTitle>
