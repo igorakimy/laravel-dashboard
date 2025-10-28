@@ -15,6 +15,7 @@ Route::middleware(['guest'])->group(function () {
         ->name('login.show');
 
     Route::post('login', [LoginController::class, 'login'])
+        ->middleware('throttle:6,1')
         ->name('login');
 
     // Register
@@ -22,6 +23,7 @@ Route::middleware(['guest'])->group(function () {
         ->name('register.show');
 
     Route::post('register', [RegisterController::class, 'register'])
+        ->middleware('throttle:6,1')
         ->name('register');
 
     // Reset Password
@@ -42,9 +44,11 @@ Route::middleware(['guest'])->group(function () {
         ->name('two-factor.login');
 
     Route::post('two-factor/verify', [TwoFactorAuthController::class, 'verify'])
+        ->middleware('throttle:6,1')
         ->name('two-factor.verify');
 
     Route::post('two-factor/recovery', [TwoFactorAuthController::class, 'recovery'])
+        ->middleware('throttle:6,1')
         ->name('two-factor.recovery');
 });
 

@@ -63,7 +63,7 @@ class TwoFactorChallengeRequest extends FormRequest
         return function ($attribute, $value, $fail) {
             if (! $value) return;
 
-            $isValid = Google2FA::verifyKey(
+            $isValid = Google2FA::verifyGoogle2FA(
                 $this->challengedUser()->two_factor_secret,
                 $value
             );

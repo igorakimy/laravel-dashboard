@@ -37,7 +37,7 @@ return [
     /*
      * One Time Password request input name.
      */
-    'otp_input' => 'one_time_password',
+    'otp_input' => 'code',
 
     /*
      * One Time Password Window.
@@ -52,7 +52,7 @@ return [
     /*
      * User's table column for google2fa secret.
      */
-    'otp_secret_column' => 'google2fa_secret',
+    'otp_secret_column' => 'two_factor_secret',
 
     /*
      * One Time Password View.

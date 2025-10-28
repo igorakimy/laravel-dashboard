@@ -15,12 +15,18 @@ interface BreadcrumbItem {
 
 interface SharedData {
   auth: Auth;
+  flash: FlashMessage;
   isSidebarOpen: boolean;
   [key: string]: unknown;
 }
 
 interface Auth {
   user: User;
+}
+
+interface FlashMessage {
+  success: string | null;
+  error: string | null;
 }
 
 interface User {
