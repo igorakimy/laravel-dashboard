@@ -4,6 +4,7 @@ namespace App\Actions\Auth;
 
 use App\Actions\User\CreateUserAction;
 use App\Data\Auth\RegisterData;
+use App\Enums\RolesEnum;
 use App\Http\Requests\Auth\RegisterRequest;
 use Illuminate\Auth\Events\Registered;
 
@@ -25,6 +26,8 @@ readonly final class RegisterAction
         $data = RegisterData::from($request);
 
         $user = $this->createUser->handle($data);
+
+        $user->assignRole(RolesEnum::USER);
 
         event(new Registered($user));
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Role\RoleController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\TwoFactorController;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('two-factor/generate-codes', [TwoFactorController::class, 'generateRecoveryCodes'])
             ->name('two-factor.recovery.generate');
     });
+
+    // Roles
+    Route::resource('roles', RoleController::class);
 });
 
 require __DIR__ . '/auth.php';

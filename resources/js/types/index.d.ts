@@ -1,11 +1,19 @@
 import { InertiaLinkProps } from '@inertiajs/react';
 import { LucideIcon } from 'lucide-react';
 
+interface NavItemsGroup {
+  title: string;
+  children: NavItem[];
+  permission?: string;
+}
+
 interface NavItem {
   title: string;
   href: NonNullable<InertiaLinkProps['href']>;
   icon?: LucideIcon | null;
+  children?: NavItem[];
   isActive?: boolean;
+  permission?: string;
 }
 
 interface BreadcrumbItem {
@@ -22,6 +30,8 @@ interface SharedData {
 
 interface Auth {
   user: User;
+  permissions: Permission[];
+  isAdmin: boolean;
 }
 
 interface FlashMessage {
@@ -37,4 +47,18 @@ interface User {
   created_at: string;
   updated_at: string;
   [key: string]: unknown;
+}
+
+interface Permission {
+  id: number;
+  name: string;
+  display_name: string;
+  group: string;
+}
+
+interface Role {
+  id: number;
+  name: string;
+  display_name: string;
+  permissions: Permission[];
 }

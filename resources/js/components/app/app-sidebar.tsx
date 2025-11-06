@@ -9,17 +9,42 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { type NavItem } from '@/types';
+import { NavItemsGroup } from '@/types';
 import { Link } from '@inertiajs/react';
-import { LayoutGrid } from 'lucide-react';
+import { LayoutDashboard, ShieldUser, UsersRound } from 'lucide-react';
 import { ComponentProps } from 'react';
 import AppLogo from './app-logo';
 
-const navItems: NavItem[] = [
+const navItemsGroups: NavItemsGroup[] = [
   {
-    title: 'Панель управления',
-    href: '/dashboard',
-    icon: LayoutGrid,
+    title: 'Платформа',
+    permission: 'dashboard-view',
+    children: [
+      {
+        title: 'Панель управления',
+        href: '/dashboard',
+        icon: LayoutDashboard,
+        permission: 'dashboard-view',
+      },
+    ],
+  },
+  {
+    title: 'Доступ',
+    permission: 'access-view',
+    children: [
+      {
+        title: 'Роли',
+        href: '/roles',
+        icon: ShieldUser,
+        permission: 'roles-view',
+      },
+      {
+        title: 'Пользователи',
+        href: '/users',
+        icon: UsersRound,
+        permission: 'users-view',
+      },
+    ],
   },
 ];
 
@@ -39,7 +64,7 @@ export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
 
       <SidebarContent>
-        <NavMain items={navItems} />
+        <NavMain itemGroups={navItemsGroups} />
       </SidebarContent>
 
       <SidebarFooter>

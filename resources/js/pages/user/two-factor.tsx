@@ -67,8 +67,8 @@ export default function TwoFactor({
 
               <div className="relative inline">
                 <Form action={route('user.two-factor.disable')} method="delete">
-                  {({ proccessing }) => (
-                    <Button variant="destructive" type="submit" disabled={proccessing}>
+                  {({ processing }) => (
+                    <Button variant="destructive" type="submit" disabled={processing}>
                       <ShieldBan />
                       Отключить 2FA
                     </Button>
@@ -102,7 +102,7 @@ export default function TwoFactor({
                     {({ processing }) => (
                       <Button type="submit" disabled={processing}>
                         <ShieldCheck />
-                        Включить 2FA
+                        Включить
                       </Button>
                     )}
                   </Form>

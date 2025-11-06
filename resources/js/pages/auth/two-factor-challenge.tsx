@@ -4,10 +4,10 @@ import { Input } from '@/components/ui/input';
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 import { OTP_MAX_LENGTH } from '@/hooks/use-two-factor-auth';
 import AuthLayout from '@/layouts/auth-layout';
+import { SharedData } from '@/types';
 import { Form, Head, usePage } from '@inertiajs/react';
 import { REGEXP_ONLY_DIGITS } from 'input-otp';
 import { useMemo, useState } from 'react';
-import { SharedData } from '@/types';
 
 type AuthConfigContent = {
   title: string;
@@ -68,9 +68,7 @@ export default function TwoFactorChallenge() {
                     required
                   />
                   <InputError message={errors.recovery_code} />
-                  {flash.error && (
-                    <InputError message={flash.error} />
-                  )}
+                  {flash.error && <InputError message={flash.error} />}
                 </>
               ) : (
                 <div className="flex flex-col items-center justify-center space-y-3 text-center">
@@ -92,9 +90,7 @@ export default function TwoFactorChallenge() {
                     </InputOTP>
                   </div>
                   <InputError message={errors.code} />
-                  {flash.error && (
-                    <InputError message={flash.error} />
-                  )}
+                  {flash.error && <InputError message={flash.error} />}
                 </div>
               )}
 
@@ -119,8 +115,6 @@ export default function TwoFactorChallenge() {
             </>
           )}
         </Form>
-
-
       </div>
     </AuthLayout>
   );

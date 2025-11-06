@@ -19,27 +19,23 @@ export function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
       {breadcrumbs && breadcrumbs.length > 0 && (
         <Breadcrumb>
           <BreadcrumbList>
-            <>
-              {breadcrumbs.map((item, index) => {
-                const isLast = index === breadcrumbs.length - 1;
-                return (
-                  <div key={index}>
-                    <BreadcrumbItem>
-                      <>
-                        {isLast ? (
-                          <BreadcrumbPage>{item.title}</BreadcrumbPage>
-                        ) : (
-                          <BreadcrumbLink asChild>
-                            <Link href={item.href}>{item.title}</Link>
-                          </BreadcrumbLink>
-                        )}
-                      </>
-                    </BreadcrumbItem>
-                    {!isLast && <BreadcrumbSeparator />}
-                  </div>
-                );
-              })}
-            </>
+            {breadcrumbs.map((item, index) => {
+              const isLast = index === breadcrumbs.length - 1;
+              return (
+                <div className="flex items-center space-x-2" key={index}>
+                  <BreadcrumbItem>
+                    {isLast ? (
+                      <BreadcrumbPage>{item.title}</BreadcrumbPage>
+                    ) : (
+                      <BreadcrumbLink asChild>
+                        <Link href={item.href}>{item.title}</Link>
+                      </BreadcrumbLink>
+                    )}
+                  </BreadcrumbItem>
+                  {!isLast && <BreadcrumbSeparator />}
+                </div>
+              );
+            })}
           </BreadcrumbList>
         </Breadcrumb>
       )}

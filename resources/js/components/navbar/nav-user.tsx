@@ -14,7 +14,7 @@ import { UserMenuContent } from '@/components/user/user-menu-content';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { SharedData } from '@/types';
 import { usePage } from '@inertiajs/react';
-import { ChevronsUpDown } from 'lucide-react';
+import { EllipsisVertical } from 'lucide-react';
 
 export function NavUser() {
   const { auth } = usePage<SharedData>().props;
@@ -31,7 +31,7 @@ export function NavUser() {
               className="group text-sidebar-accent-foreground data-[state=open]:bg-sidebar-accent"
             >
               <UserInfo user={auth.user} />
-              <ChevronsUpDown className="ml-auto size-4" />
+              <EllipsisVertical className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
