@@ -17,9 +17,11 @@
         "bacon/bacon-qr-code": "^3.0",
         "hosni/laravel-temporary-urls-minio": "^1.0",
         "inertiajs/inertia-laravel": "^2.0",
+        "kirschbaum-development/eloquent-power-joins": "^4.2",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "league/flysystem-aws-s3-v3": "^3.0",
+        "mchev/banhammer": "^2.4",
         "pragmarx/google2fa-laravel": "^2.3",
         "spatie/laravel-data": "^4.18",
         "spatie/laravel-medialibrary": "^11.15",
@@ -41,7 +43,8 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Tighten\\Ziggy\\": "vendor/tightenco/ziggy/src/"
         }
     },
     "autoload-dev": {

@@ -20,10 +20,17 @@ enum PermissionGroupsEnum: string
             ],
             self::ACCESS => [
                 PermissionsEnum::ACCESS_VIEW,
+                // Roles
                 PermissionsEnum::ROLES_VIEW,
                 PermissionsEnum::ROLES_CREATE,
                 PermissionsEnum::ROLES_EDIT,
                 PermissionsEnum::ROLES_DELETE,
+                // Users
+                PermissionsEnum::USERS_VIEW,
+                PermissionsEnum::USERS_CREATE,
+                PermissionsEnum::USERS_EDIT,
+                PermissionsEnum::USERS_DELETE,
+                PermissionsEnum::USERS_BAN,
             ],
             self::SETTINGS => [
                 PermissionsEnum::SETTINGS_VIEW,

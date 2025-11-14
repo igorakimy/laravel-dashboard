@@ -13,7 +13,15 @@ enum PermissionsEnum: string
 
     // Access
     case ACCESS_VIEW = 'access-view';
+
+    // Users
     case USERS_VIEW = 'users-view';
+    case USERS_CREATE = 'users-create';
+    case USERS_EDIT = 'users-edit';
+    case USERS_DELETE = 'users-delete';
+    case USERS_BAN = 'users-ban';
+
+    // Roles
     case ROLES_VIEW = 'roles-view';
     case ROLES_CREATE = 'roles-create';
     case ROLES_EDIT = 'roles-edit';
@@ -32,13 +40,17 @@ enum PermissionsEnum: string
             self::DASHBOARD_VIEW => 'Dashboard View',
             // Access
             self::ACCESS_VIEW => 'Access View',
-            // Users
-            self::USERS_VIEW => 'Users View',
             // Roles
             self::ROLES_VIEW => 'Roles View',
             self::ROLES_CREATE => 'Roles Create',
             self::ROLES_EDIT => 'Roles Edit',
             self::ROLES_DELETE => 'Roles Delete',
+            // Users
+            self::USERS_VIEW => 'Users View',
+            self::USERS_CREATE => 'Users Create',
+            self::USERS_EDIT => 'Users Edit',
+            self::USERS_DELETE => 'Users Delete',
+            self::USERS_BAN => 'Users Ban',
             // Settings
             self::SETTINGS_VIEW => 'Settings View',
             // Utilities

@@ -58,7 +58,7 @@ const multiSelectVariants = cva("m-1 transition-all duration-300 ease-in-out", {
       inverted: "inverted",
     },
     badgeAnimation: {
-      bounce: "hover:-translate-y-1 hover:scale-110",
+      bounce: "",
       pulse: "hover:animate-pulse",
       wiggle: "hover:animate-wiggle",
       fade: "hover:opacity-80",
@@ -626,6 +626,8 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
         setSelectedValues(newSelectedValues);
         onValueChange(newSelectedValues);
       }
+
+      // console.log(event.key)
     };
 
     const toggleOption = (optionValue: string) => {
@@ -818,6 +820,7 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
               } options selected. ${placeholder}`}
               className={cn(
                 "flex p-1 rounded-md border min-h-10 h-auto items-center justify-between bg-inherit hover:bg-inherit [&_svg]:pointer-events-auto",
+
                 autoSize ? "w-auto" : "w-full",
                 responsiveSettings.compactMode && "min-h-8 text-sm",
                 screenSize === "mobile" && "min-h-12 text-base",
@@ -923,10 +926,10 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
                                 }
                               }}
                               aria-label={`Remove ${option.label} from selection`}
-                              className="ml-2 h-4 w-4 cursor-pointer hover:bg-white/20 rounded-sm p-0.5 -m-0.5 focus:outline-none focus:ring-1 focus:ring-white/50">
+                              className="ml-2 h-4 w-4 cursor-pointer relative hover:bg-destructive rounded-full p-0.5 -m-0.5 focus:outline-none focus:ring-1 focus:ring-white/50">
                               <XCircle
                                 className={cn(
-                                  "h-3 w-3",
+                                  "absolute top-0 left-0 h-3 w-3",
                                   responsiveSettings.compactMode &&
                                   "h-2.5 w-2.5"
                                 )}
@@ -955,10 +958,10 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
                         }}>
                         {`+ ${
                           selectedValues.length - responsiveSettings.maxCount
-                        } more`}
+                        }`}
                         <XCircle
                           className={cn(
-                            "ml-2 h-4 w-4 cursor-pointer",
+                            "ml-2 h-4 w-4 cursor-pointer rounded-full hover:bg-destructive",
                             responsiveSettings.compactMode && "ml-1 h-3 w-3"
                           )}
                           onClick={(event) => {
@@ -1034,9 +1037,9 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
               {searchable && (
                 <CommandInput
                   placeholder={searchOptionsText}
-                  onKeyDown={handleInputKeyDown}
-                  value={searchValue}
-                  onValueChange={setSearchValue}
+                  // onKeyDown={handleInputKeyDown}
+                  // value={searchValue}
+                  // onValueChange={setSearchValue}
                   aria-label="Search through available options"
                   aria-describedby={`${multiSelectId}-search-help`}
                 />

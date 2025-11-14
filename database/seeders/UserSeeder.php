@@ -22,5 +22,10 @@ class UserSeeder extends Seeder
         ]);
 
         $user->assignRole(RolesEnum::ADMIN);
+
+        for ($i = 0; $i < 100; $i++) {
+            $user = User::factory()->create();
+            $user->assignRole(RolesEnum::USER);
+        }
     }
 }

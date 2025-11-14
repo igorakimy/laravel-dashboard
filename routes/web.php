@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Role\RoleController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\TwoFactorController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -53,6 +54,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Roles
     Route::resource('roles', RoleController::class);
+
+    // Users
+    Route::delete('users/bulk-delete', [UserController::class, 'bulkDelete'])
+        ->name('users.bulk-delete');
+    Route::delete('users/bulk-ban', [UserController::class, 'bulkBan'])
+        ->name('users.bulk-ban');
+    Route::post('users/ban/{user}', [UserController::class, 'ban'])
+        ->name('users.ban');
+    Route::post('users/unban/{user}', [UserController::class, 'unban'])
+        ->name('users.unban');
+    Route::resource('users', UserController::class);
 });
 
 require __DIR__ . '/auth.php';

@@ -6,9 +6,11 @@ use App\Enums\RolesEnum;
 use App\Traits\TwoFactorAuthenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Mchev\Banhammer\Traits\Bannable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
@@ -16,7 +18,12 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements MustVerifyEmail, HasMedia
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable, TwoFactorAuthenticatable, HasRoles, InteractsWithMedia;
+    use HasFactory,
+        Notifiable,
+        TwoFactorAuthenticatable,
+        HasRoles,
+        Bannable,
+        InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -43,6 +50,13 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     ];
 
     /**
+     * @var list<string>
+     */
+    protected $appends = [
+        'has_ban',
+    ];
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -53,6 +67,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
+            'has_ban' => 'boolean',
         ];
     }
 
@@ -64,5 +79,12 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     public function isAdmin(): bool
     {
         return $this->hasRole(RolesEnum::ADMIN);
+    }
+
+    public function hasBan(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->isBanned()
+        );
     }
 }

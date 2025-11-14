@@ -16,6 +16,10 @@ final class CreateUserAction
             'password' => Hash::make($data->password),
         ]);
 
+        if ($user && $data->roles && is_array($data->roles)) {
+            $user->assignRole(...$data->roles);
+        }
+
         return $user;
     }
 }

@@ -1,7 +1,7 @@
+import AppearanceToggleTabs from '@/components/appearance/appearance-tabs';
 import { Breadcrumbs } from '@/components/breadcrumbs/breadcrumbs';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { type BreadcrumbItem } from '@/types';
-import AppearanceToggleTabs from '@/components/appearance/appearance-tabs';
 
 interface AppSidebarHeaderProps {
   breadcrumbs?: BreadcrumbItem[];
@@ -14,7 +14,7 @@ export function AppSidebarHeader({ breadcrumbs = [] }: AppSidebarHeaderProps) {
         <SidebarTrigger className="-ml-1" />
         <Breadcrumbs breadcrumbs={breadcrumbs} />
       </div>
-      <div className="flex w-full justify-end px-4">
+      <div className="flex w-fit justify-end px-4">
         <AppearanceToggleTabs />
       </div>
     </header>
