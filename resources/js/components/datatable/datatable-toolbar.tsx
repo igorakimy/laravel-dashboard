@@ -21,9 +21,10 @@ import { cn } from '@/lib/utils';
 import { BulkAction, PaginatedData } from '@/types';
 import { router } from '@inertiajs/react';
 import { Table } from '@tanstack/react-table';
-import { ChevronDown, MoreVertical, Search } from 'lucide-react';
+import { ChevronDown, Copy, FilterX, MoreVertical, Search } from 'lucide-react';
 import { useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -70,6 +71,10 @@ export default function DataTableToolbar<TData>({
 
   const selectedRows = table.getSelectedRowModel().rows.map((r) => r.original);
 
+  const resetFilters = () => {
+    router.get(route(route().current() ?? ''))
+  };
+
   return (
     <>
       <div className={cn('flex items-center justify-between gap-4', className)}>
@@ -83,6 +88,17 @@ export default function DataTableToolbar<TData>({
               defaultValue={query_params.search ?? ''}
               onChange={(e) => handleDebouncedSearch(e.target.value)}
             />
+          </div>
+
+          <div className="flex">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline" onClick={resetFilters}>
+                  <FilterX />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Сбросить фильтры</TooltipContent>
+            </Tooltip>
           </div>
         </div>
 

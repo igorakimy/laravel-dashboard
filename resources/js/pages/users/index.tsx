@@ -295,12 +295,15 @@ export default function UsersIndex({ users }: UsersIndexProps) {
               Управление пользователями и их ролями в системе.
             </p>
           </div>
-          <Link href={route('users.create')}>
-            <Button className="w-full md:w-auto" size="sm">
-              <Plus />
-              Добавить пользователя
-            </Button>
-          </Link>
+
+          {can('users-create') && (
+            <Link href={route('users.create')}>
+              <Button className="w-full md:w-auto" size="sm">
+                <Plus />
+                Добавить пользователя
+              </Button>
+            </Link>
+          )}
         </div>
 
         <DataTable

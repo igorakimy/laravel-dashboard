@@ -12,7 +12,7 @@ Route::get('/', function () {
     return redirect()->intended('/dashboard');
 })->name('home');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'logout.banned'])->group(function () {
     // Dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
@@ -64,7 +64,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('users.ban');
     Route::post('users/unban/{user}', [UserController::class, 'unban'])
         ->name('users.unban');
-    Route::resource('users', UserController::class);
+    Route::resource('users', UserController::class)->except('show');
 });
 
 require __DIR__ . '/auth.php';

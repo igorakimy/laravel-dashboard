@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use Faker\Provider\Person;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -24,8 +25,13 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $gender = $this->faker->randomElement([
+            Person::GENDER_MALE,
+            Person::GENDER_FEMALE,
+        ]);
+
         return [
-            'name' => fake()->name(),
+            'name' => fake()->firstName($gender) . ' ' . fake()->lastName($gender),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
