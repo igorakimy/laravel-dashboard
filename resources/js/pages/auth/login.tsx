@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import AuthLayout from '@/layouts/auth-layout';
 import { Form, Head } from '@inertiajs/react';
+import SocialButtons from '@/components/auth/social-buttons';
 
 interface LoginProps {
   status?: string;
@@ -77,6 +78,8 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                 Войти
               </Button>
             </div>
+
+            <SocialButtons />
 
             <div className="text-muted-foreground text-center text-sm">
               Не зарегистрированы?{' '}

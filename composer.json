@@ -19,6 +19,7 @@
         "inertiajs/inertia-laravel": "^2.0",
         "kirschbaum-development/eloquent-power-joins": "^4.2",
         "laravel/framework": "^12.0",
+        "laravel/socialite": "^5.23",
         "laravel/tinker": "^2.10.1",
         "league/flysystem-aws-s3-v3": "^3.0",
         "mchev/banhammer": "^2.4",

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\GithubAuthController;
+use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\NewPasswordController;
@@ -50,6 +52,21 @@ Route::middleware(['guest'])->group(function () {
     Route::post('two-factor/recovery', [TwoFactorAuthController::class, 'recovery'])
         ->middleware('throttle:6,1')
         ->name('two-factor.recovery');
+
+    // Social Authentication
+    Route::group(['prefix' => 'auth', 'as' => 'auth.'], function() {
+        // Google
+        Route::get('google/redirect', [GoogleAuthController::class, 'redirect'])
+            ->name('google.redirect');
+        Route::get('google/callback', [GoogleAuthController::class, 'callback'])
+            ->name('google.callback');
+
+        // Github
+        Route::get('github/redirect', [GithubAuthController::class, 'redirect'])
+            ->name('github.redirect');
+        Route::get('github/callback', [GithubAuthController::class, 'callback'])
+            ->name('github.callback');
+    });
 });
 
 Route::middleware(['auth'])->group(function () {

@@ -70,7 +70,7 @@ export default function TwoFactor({
                   {({ processing }) => (
                     <Button variant="destructive" type="submit" disabled={processing}>
                       <ShieldBan />
-                      Отключить 2FA
+                      Отключить
                     </Button>
                   )}
                 </Form>

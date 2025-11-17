@@ -1,5 +1,5 @@
 import AlertError from '@/components/alerts/alert-error';
-import { GridScanIcon } from '@/components/auth/grid-scan-icon';
+import { GridScanIcon } from '@/components/icons/grid-scan-icon';
 import InputError from '@/components/form/input-error';
 import { Button } from '@/components/ui/button';
 import {
@@ -172,7 +172,7 @@ function TwoFactorVerificationStep({ onClose, onBack }: TwoFactorVerificationSte
                   ))}
                 </InputOTPGroup>
               </InputOTP>
-              <InputError message={errors.confirmTwoFactorAuth?.code} />
+              <InputError message={errors && errors.confirmTwoFactorAuth?.code} />
             </div>
 
             <div className="flex w-full space-x-5">
