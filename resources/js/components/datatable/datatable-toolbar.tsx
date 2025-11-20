@@ -16,15 +16,15 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import usePermissions from '@/hooks/use-permissions';
 import { cn } from '@/lib/utils';
 import { BulkAction, PaginatedData } from '@/types';
 import { router } from '@inertiajs/react';
 import { Table } from '@tanstack/react-table';
-import { ChevronDown, Copy, FilterX, MoreVertical, Search } from 'lucide-react';
+import { ChevronDown, FilterX, MoreVertical, Search } from 'lucide-react';
 import { useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -72,7 +72,7 @@ export default function DataTableToolbar<TData>({
   const selectedRows = table.getSelectedRowModel().rows.map((r) => r.original);
 
   const resetFilters = () => {
-    router.get(route(route().current() ?? ''))
+    router.get(route(route().current() ?? ''));
   };
 
   return (

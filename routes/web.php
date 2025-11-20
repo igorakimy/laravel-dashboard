@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Role\RoleController;
+use App\Http\Controllers\Settings\GeneralSettingsController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\TwoFactorController;
 use App\Http\Controllers\User\UserController;
@@ -65,6 +66,12 @@ Route::middleware(['auth', 'verified', 'logout.banned'])->group(function () {
     Route::post('users/unban/{user}', [UserController::class, 'unban'])
         ->name('users.unban');
     Route::resource('users', UserController::class)->except('show');
+
+    // Settings
+    Route::get('settings/general/edit', [GeneralSettingsController::class, 'edit'])
+        ->name('settings.general.edit');
+    Route::put('settings/general/update', [GeneralSettingsController::class, 'update'])
+        ->name('settings.general.update');
 });
 
 require __DIR__ . '/auth.php';

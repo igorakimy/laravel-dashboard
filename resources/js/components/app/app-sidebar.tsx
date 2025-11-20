@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/sidebar';
 import { NavItemsGroup } from '@/types';
 import { Link } from '@inertiajs/react';
-import { LayoutDashboard, ShieldUser, UsersRound } from 'lucide-react';
+import { LayoutDashboard, Settings, ShieldUser, UsersRound } from 'lucide-react';
 import { ComponentProps } from 'react';
 import AppLogo from './app-logo';
 
@@ -43,6 +43,18 @@ const navItemsGroups: NavItemsGroup[] = [
         href: '/users',
         icon: UsersRound,
         permission: 'users-view',
+      },
+    ],
+  },
+  {
+    title: 'Конфигурация',
+    permission: 'settings-view',
+    children: [
+      {
+        title: 'Настройки',
+        href: '/settings/general/edit',
+        icon: Settings,
+        permission: 'settings-view',
       },
     ],
   },

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Settings\GeneralSettings;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
@@ -55,6 +56,9 @@ class HandleInertiaRequests extends Middleware
                     'location' => $request->url(),
                     'query' => $request->query(),
                 ],
+                'settings' => [
+                    'general' => fn() => app(GeneralSettings::class)->toArray(),
+                ]
             ]
         );
     }

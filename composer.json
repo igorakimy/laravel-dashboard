@@ -27,6 +27,7 @@
         "spatie/laravel-data": "^4.18",
         "spatie/laravel-medialibrary": "^11.15",
         "spatie/laravel-permission": "^6.21",
+        "spatie/laravel-settings": "^3.5",
         "tightenco/ziggy": "^2.6"
     },
     "require-dev": {

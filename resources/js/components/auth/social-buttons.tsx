@@ -1,8 +1,8 @@
-import { Button } from '@/components/ui/button';
-import GoogleIcon from '@/components/icons/google-icon';
 import GithubIcon from '@/components/icons/github-icon';
-import { useState } from 'react';
+import GoogleIcon from '@/components/icons/google-icon';
+import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
+import { useState } from 'react';
 
 export default function SocialButtons() {
   const [processing, setProcessing] = useState({
@@ -28,7 +28,7 @@ export default function SocialButtons() {
           variant="outline"
           disabled={processing.google || processing.github}
           onClick={() => {
-            setProcessing({...processing, google: true});
+            setProcessing({ ...processing, google: true });
             window.location.href = route('auth.google.redirect');
           }}
         >
@@ -42,7 +42,7 @@ export default function SocialButtons() {
           variant="outline"
           disabled={processing.github || processing.google}
           onClick={() => {
-            setProcessing({...processing, github: true});
+            setProcessing({ ...processing, github: true });
             window.location.href = route('auth.github.redirect');
           }}
         >

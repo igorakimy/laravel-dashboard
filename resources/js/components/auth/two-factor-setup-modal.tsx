@@ -1,6 +1,6 @@
 import AlertError from '@/components/alerts/alert-error';
-import { GridScanIcon } from '@/components/icons/grid-scan-icon';
 import InputError from '@/components/form/input-error';
+import { GridScanIcon } from '@/components/icons/grid-scan-icon';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,

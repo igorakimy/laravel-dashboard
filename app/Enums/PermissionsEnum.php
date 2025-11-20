@@ -29,6 +29,7 @@ enum PermissionsEnum: string
 
     // Settings
     case SETTINGS_VIEW = 'settings-view';
+    case SETTINGS_EDIT = 'settings-edit';
 
     // Utilities
     case UTILITIES_VIEW = 'utilities-view';
@@ -53,6 +54,7 @@ enum PermissionsEnum: string
             self::USERS_BAN => 'Users Ban',
             // Settings
             self::SETTINGS_VIEW => 'Settings View',
+            self::SETTINGS_EDIT => 'Settings Edit',
             // Utilities
             self::UTILITIES_VIEW => 'Utilities View',
         };

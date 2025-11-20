@@ -31,6 +31,9 @@ interface SharedData {
   flash: FlashMessage;
   isSidebarOpen: boolean;
   ziggy: ZiggyRoutes;
+  settings: {
+    general: GeneralSettings;
+  };
   [key: string]: unknown;
 }
 
@@ -127,4 +130,9 @@ interface Role {
   name: string;
   display_name: string;
   permissions: Permission[];
+}
+
+interface GeneralSettings {
+  app_name: string;
+  app_description: string;
 }

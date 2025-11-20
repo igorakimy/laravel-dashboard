@@ -34,6 +34,7 @@ enum PermissionGroupsEnum: string
             ],
             self::SETTINGS => [
                 PermissionsEnum::SETTINGS_VIEW,
+                PermissionsEnum::SETTINGS_EDIT,
             ],
             self::UTILITIES => [
                 PermissionsEnum::UTILITIES_VIEW,

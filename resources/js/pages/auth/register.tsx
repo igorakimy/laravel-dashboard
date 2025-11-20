@@ -1,3 +1,4 @@
+import SocialButtons from '@/components/auth/social-buttons';
 import InputError from '@/components/form/input-error';
 import TextLink from '@/components/links/text-link';
 import { Button } from '@/components/ui/button';
@@ -6,7 +7,6 @@ import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import AuthLayout from '@/layouts/auth-layout';
 import { Form, Head } from '@inertiajs/react';
-import SocialButtons from '@/components/auth/social-buttons';
 
 export default function Register() {
   return (

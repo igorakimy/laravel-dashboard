@@ -41,7 +41,7 @@ class UserController extends Controller
             'page' => $paginationData->page,
         ];
 
-        $query = User::query()->with('roles');
+        $query = User::query()->with(['roles', 'bans']);
 
         if ($request->filled('sort_by') && $sortingData->sort_by === 'roles') {
             $query->orderByLeftPowerJoins('roles.name', $sortingData->sort_dir);
